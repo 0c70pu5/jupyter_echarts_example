@@ -1,0 +1,2 @@
+recursive-include echarts_example/static *.*
+include echarts_example.json
