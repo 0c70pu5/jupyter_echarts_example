@@ -4,9 +4,7 @@ dist/
 build/
 *.py[cod]
 node_modules/
-
-# Compiled javascript
 echarts_example/static/
-
-# OS X
 .DS_Store
+.directory
+.idea
