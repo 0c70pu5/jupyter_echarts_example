@@ -22,8 +22,9 @@ or
 node_modules/.bin/webpack --watch
 ```
 
+(from project root dir)
 ```
-python3 setup.py install
+python3 setup.py install --user
 ```
 
 copy all from <project>/build/lib/echarts_example to .local/share/jupyter/nbextensions/echarts_example
