@@ -1,5 +1,7 @@
 import ipywidgets as widgets
 from traitlets import Unicode
+import random
+import json
 
 @widgets.register
 class Echarts(widgets.DOMWidget):
@@ -10,4 +12,12 @@ class Echarts(widgets.DOMWidget):
     _model_module = Unicode('echarts_example').tag(sync=True)
     _view_module_version = Unicode('^0.1.1').tag(sync=True)
     _model_module_version = Unicode('^0.1.1').tag(sync=True)
-    value = Unicode('Echarts example').tag(sync=True)
+    series_data = Unicode('Echarts example').tag(sync=True)
+
+    def __init__(self):
+        self.series_data = json.dumps(random.sample(range(30), 10))
+        print('called')
+
+    @classproperty
+    def updateValue(self):
+        self.series_data = json.dumps(random.sample(range(30), 10))

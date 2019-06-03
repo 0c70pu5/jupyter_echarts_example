@@ -25,7 +25,7 @@ var EchartsModel = widgets.DOMWidgetModel.extend({
         _view_module: 'echarts_example',
         _model_module_version: '0.1.1',
         _view_module_version: '0.1.1',
-        value: 'Hello World'
+        series_data: []
     })
 });
 
@@ -33,26 +33,21 @@ var EchartsModel = widgets.DOMWidgetModel.extend({
 // Custom View. Renders the widget model.
 var EchartsView = widgets.DOMWidgetView.extend({
     render: function () {
-        this.value_changed();
-
-        this.model.on('change:value', this.value_changed, this);
-
-        // var options = this.model.get('value');
-
+        var seriesData = this.model.get('series_data');
+        console.log(seriesData);
         var options = {
             legend: {
                 left: 'center',
                 top: 'middle'
             },
             title: {
-                text: 'ECharts 移动端图表'
+                text: 'ECharts'
             },
             tooltip: {
                 trigger: 'axis',
                 textStyle: {
                     color: '#ffffff',
                 },
-                //坐标轴指示器
                 axisPointer: {
                     type: 'line'
                 },
@@ -66,11 +61,10 @@ var EchartsView = widgets.DOMWidgetView.extend({
             },
             yAxis: {},
             series: [{
-                name: '参观量',
+                name: 'chart',
                 type: 'line',
                 color: ['#F5847F'],
-                data: [5, 10, 16, 17, 10, 7, 11],
-                //特殊标注线
+                data: seriesData, //[5, 10, 16, 17, 10, 7, 11],
                 markLine: {
                     symbol: ['', ''],
                     silent: true,
@@ -86,21 +80,17 @@ var EchartsView = widgets.DOMWidgetView.extend({
                         },
                     },
                     data: [{
-                        name: '每天至少',
+                        name: 'data 1',
                         yAxis: 8
                     }]
                 }
             }]
         };
         this.el.style.height = "800px";
-        this.el.style.width = "500px";
+        this.el.style.width = "900px";
 
         var myChart = echarts.init(this.el);
         myChart.setOption(options);
-    },
-
-    value_changed: function () {
-
     }
 });
 
