@@ -1,4 +1,3 @@
-// Configure requirejs
 if (window.require) {
     window.require.config({
         map: {
@@ -9,7 +8,6 @@ if (window.require) {
     });
 }
 
-// Export the required load_ipython_extension
 module.exports = {
     load_ipython_extension: function() {}
 };

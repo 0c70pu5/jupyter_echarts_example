@@ -1,5 +1,5 @@
-var echarts_example = require('./index');
-var base = require('@jupyter-widgets/base');
+const echarts_example = require('./index');
+const base = require('@jupyter-widgets/base');
 
 module.exports = {
   id: 'echarts_example',
